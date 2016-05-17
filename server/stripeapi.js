@@ -34,7 +34,8 @@ refundDetailsSchema = new SimpleSchema({
 let expectedErrors = [
   "card_declined",
   "incorrect_cvc",
-  "expired_card"
+  "expired_card",
+  "incorrect_number"
 ];
 
 StripeApi.methods.getApiKey = new ValidatedMethod({
@@ -78,7 +79,7 @@ StripeApi.methods.createCharge = new ValidatedMethod({
       }
       ReactionCore.Log.warn("Received unexpected error code: " + e.code);
       ReactionCore.Log.warn(e);
-      throw Meteor.Error("Stripe Charge FAIL", e);
+      return {error: e, result: null};
     }
   }
 });

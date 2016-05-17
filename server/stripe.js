@@ -68,7 +68,7 @@ Meteor.methods({
 
     try {
       chargeResult = StripeApi.methods.createCharge.call({chargeObj: chargeObj});
-      if (chargeResult.status === "succeeded") {
+      if (chargeResult && chargeResult.status === "succeeded") {
         result = {
           saved: true,
           response: chargeResult
