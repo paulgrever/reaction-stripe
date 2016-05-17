@@ -1,7 +1,8 @@
 Template.stripeSettings.helpers({
   packageData: function () {
     return ReactionCore.Collections.Packages.findOne({
-      name: "reaction-stripe"
+      name: "reaction-stripe",
+      shopId: ReactionCore.getShopId()
     });
   }
 });
@@ -9,7 +10,8 @@ Template.stripeSettings.helpers({
 Template.stripe.helpers({
   packageData: function () {
     return ReactionCore.Collections.Packages.findOne({
-      name: "reaction-stripe"
+      name: "reaction-stripe",
+      shopId: ReactionCore.getShopId()
     });
   }
 });
